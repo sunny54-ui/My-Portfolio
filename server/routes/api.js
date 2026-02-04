@@ -1,45 +1,44 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
-const path = require('path');
-
-const dataPath = path.join(__dirname, '../data/portfolioData.json');
-
-// Helper to read data
-const readData = () => {
-    const data = fs.readFileSync(dataPath);
-    return JSON.parse(data);
-};
-
-// Helper to write data
-const writeData = (data) => {
-    fs.writeFileSync(dataPath, JSON.stringify(data, null, 4));
-};
+const Portfolio = require('../models/Portfolio');
+const initialData = require('../data/portfolioData.json');
 
 // GET all portfolio data
-router.get('/portfolio', (req, res) => {
+router.get('/portfolio', async (req, res) => {
     try {
-        const data = readData();
+        let data = await Portfolio.findOne();
+
+        // Seed initial data if DB is empty
+        if (!data) {
+            data = await Portfolio.create(initialData);
+        }
+
         res.json(data);
     } catch (error) {
+        console.error('Error fetching portfolio data:', error);
         res.status(500).json({ message: 'Error reading data' });
     }
 });
 
-// UPDATE portfolio data (Simplified for now - expects full object or partials)
-router.post('/portfolio', (req, res) => {
+// UPDATE portfolio data
+router.post('/portfolio', async (req, res) => {
     try {
         const newData = req.body;
-        // Ideally, merge logic here. For now, we replace sections.
-        // Or simpler: The admin sends the WHOLE Updated JSON structure.
-        // Let's assume the client sends the specific section to update or the full object.
 
-        let currentData = readData();
-        const updatedData = { ...currentData, ...newData }; // Shallow merge
+        // Updates the single portfolio document, or creates it if it doesn't exist
+        // Note: This replaces top-level fields given in newData, but for nested arrays, 
+        // it might replace the whole array if provided.
+        // Given the frontend likely sends the structured sections, this should work fine.
 
-        writeData(updatedData);
+        const updatedData = await Portfolio.findOneAndUpdate(
+            {},
+            newData,
+            { new: true, upsert: true } // upsert: create if not exists
+        );
+
         res.json({ message: 'Data updated successfully', data: updatedData });
     } catch (error) {
+        console.error('Error updating portfolio data:', error);
         res.status(500).json({ message: 'Error updating data' });
     }
 });

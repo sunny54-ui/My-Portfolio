@@ -1,0 +1,93 @@
+{
+    "personalInfo": {
+        "name": "Raj Ranjan",
+        "profilePic": "http://localhost:5000/uploads/1770208967369-340536722.webp",
+        "title": "Java Developer & Full Stack Enthusiast",
+        "email": "rajputsunnysingh54@gmail.com",
+        "phone": "9430698602",
+        "location": "107C, Indrapuri, Bhopal, MP",
+        "summary": "Motivated B.Tech Computer Science student (3rd Year) with a strong foundation in Java and Full Stack Web Development. Passionate about building scalable applications and solving complex problems. Proficient in building dynamic user interfaces with React.js and robust backends using Node.js.",
+        "linkedin": "https://www.linkedin.com/in/raj-ranjan-564b4037a/",
+        "github": "https://github.com/sunny54-ui",
+        "website": "https://portfolio.com",
+        "resumeLink": "http://localhost:5000/uploads/1770209368116-389340020.pdf"
+    },
+    "skills": [
+        {
+            "category": "Languages",
+            "items": [
+                "Java (Core)",
+                "JavaScript"
+            ]
+        },
+        {
+            "category": "Frontend",
+            "items": [
+                "HTML5",
+                "CSS3",
+                "React.js",
+                "Tailwind CSS"
+            ]
+        },
+        {
+            "category": "Backend",
+            "items": [
+                "Node.js",
+                "Express.js"
+            ]
+        },
+        {
+            "category": "Database",
+            "items": [
+                "MongoDB",
+                "Mongoose"
+            ]
+        },
+        {
+            "category": "Tools",
+            "items": [
+                "Git",
+                "GitHub",
+                "Socket.IO",
+                "JWT"
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "title": "Go-Ride (Ride Booking Application)",
+            "description": "Full-stack ride-booking platform with real-time tracking.",
+            "techStack": [
+                "React.js",
+                "Node.js",
+                "MongoDB",
+                "Socket.IO",
+                "Google Maps API"
+            ],
+            "link": "#"
+        },
+        {
+            "id": 2,
+            "title": "AI Resume Builder",
+            "description": "Intelligent web app that automates resume creation using NLP.",
+            "techStack": [
+                "React.js",
+                "Node.js",
+                "Express.js",
+                "OpenAI API"
+            ],
+            "link": "#"
+        }
+    ],
+    "socials": [
+        {
+            "platform": "LinkedIn",
+            "url": "https://linkedin.com/in/raj-ranjan"
+        },
+        {
+            "platform": "GitHub",
+            "url": "https://github.com/raj-ranjan"
+        }
+    ]
+}
